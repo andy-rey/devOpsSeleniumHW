@@ -1,24 +1,30 @@
 package fblogin.assignment;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.chrome.ChromeOptions;
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
 
 public class App {
     public static void main(String[] args) {
-        // Set the ChromeDriver path (optional if added to system path)
-        System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
+      
 
         // Initialize the Chrome WebDriver
-        WebDriver driver = new ChromeDriver();
         ChromeOptions options = new ChromeOptions();
+
+        
         options.addArguments("--headless");
+        
+        WebDriver driver = new ChromeDriver();
+     
 
         try {
             // Open Facebook login page
