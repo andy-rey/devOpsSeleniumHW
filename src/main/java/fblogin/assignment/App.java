@@ -19,19 +19,13 @@ public class App {
 
         // Initialize the Chrome WebDriver
         ChromeOptions options = new ChromeOptions();
-
-        
         options.addArguments("--headless");
-        
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver(options);
      
 
         try {
             // Open Facebook login page
             driver.get("https://www.facebook.com");
-
-            // Maximize the browser window
-            driver.manage().window().maximize();
 
             // Locate the email input field
             WebElement emailField = driver.findElement(By.id("email"));
