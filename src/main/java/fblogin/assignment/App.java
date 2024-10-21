@@ -14,6 +14,7 @@ public class App {
         // Initialize the Chrome WebDriver
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--no-sandbox")
         WebDriver driver = new ChromeDriver();
      
 
