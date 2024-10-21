@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class App {
     public static void main(String[] args) {
         // Set the ChromeDriver path (optional if added to system path)
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/bin/chromedriver.exe");
 
         // Initialize the Chrome WebDriver
         ChromeOptions options = new ChromeOptions();
