@@ -12,9 +12,10 @@ public class App {
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 
         // Initialize the Chrome WebDriver
-        WebDriver driver = new ChromeDriver();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        WebDriver driver = new ChromeDriver();
+     
 
         try {
             // Open Facebook login page
