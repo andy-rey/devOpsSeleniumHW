@@ -13,8 +13,17 @@ public class App {
 
         // Initialize the Chrome WebDriver
         ChromeOptions options = new ChromeOptions();
+
+        
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");  // Overcome limited resource problems
+        options.addArguments("--disable-gpu");            // Disable GPU rendering as it's not needed in headless mode
+        options.addArguments("--window-size=1920,1080");  // Set a fixed window size for consistent results
+        options.addArguments("--disable-extensions");     // Disable any extensions
+        options.addArguments("--remote-debugging-port=9222");  // Remote debugging for potential issues
+        
         WebDriver driver = new ChromeDriver();
      
 
