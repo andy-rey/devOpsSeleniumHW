@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, IOException {
       
 
         // Initialize the Chrome WebDriver
@@ -23,36 +23,37 @@ public class App {
         WebDriver driver = new ChromeDriver(options);
      
 
-        try {
-            // Open Facebook login page
-            driver.get("https://www.facebook.com");
+        
+            // Open  contact page
+            driver.get("http://3.80.172.32:8081/contact.html");
+            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+            
+            driver.findElement(By.name("your_name")).sendKeys("DevsopsUser");
+            driver.findElement(By.name("phone_number")).sendKeys("999-999-99");
+            driver.findElement(By.name("email_address")).sendKeys("xyc@abz");
+            
+            driver.findElement(By.id("my-button")).click();
+            
+            Thread.sleep(2000);
+            // Close the browser after 
+            
+            
+          //assert Result
+    		String message = driver.findElement(By.id("response")).getText();
+    		
+    		System.out.println(message);
+    		
+    		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 
-            // Locate the email input field
-            WebElement emailField = driver.findElement(By.id("email"));
-            emailField.sendKeys("feaunpxydlpzgffrpz@poplk.com");
+    		File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
-            // Locate the password input field
-            WebElement passwordField = driver.findElement(By.id("pass"));
-            passwordField.sendKeys("devopsassigment1");
+    		File destFile = new File("test-report.jpg");
 
-            // Locate the login button and click it
-            WebElement loginButton = driver.findElement(By.name("login"));
-            loginButton.click();
+    		FileUtils.copyFile(srcFile, destFile);
 
-            // Optionally, you can add a wait to allow the page to load
-            Thread.sleep(5000); // Adjust the sleep time as per your network speed
+    		driver.quit();
 
-            // Check if the login was successful by looking for an element on the homepage
-            if (driver.getCurrentUrl().contains("facebook.com")) {
-                System.out.println("Login successful!");
-            } else {
-                System.out.println("Login failed.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // Close the browser after the login attempt
-            driver.quit();
-        }
+    		System.out.println("Script Executed and Result Captured");
+        
     }
 }
